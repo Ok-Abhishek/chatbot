@@ -1,6 +1,7 @@
 class MessageParser {
-    constructor(actionProvider) {
+    constructor(actionProvider, state) {
         this.actionProvider = actionProvider;
+        this.state = state;
     }
 
     parse(message) {
@@ -13,6 +14,19 @@ class MessageParser {
         if (lowerCaseMessage.includes("javascript")) {
             this.actionProvider.handleJavascriptList();
         }
+
+        if (lowerCaseMessage.includes("mozilla")) {
+            this.actionProvider.handleMozillaList();
+        }
+
+        if (lowerCaseMessage.includes("resources on frontend")) {
+            this.actionProvider.handleFrontendList();
+        }
+
+        if (lowerCaseMessage.includes("thank you")) {
+            this.actionProvider.showHelpPrompt();
+        }
+
     }
 }
 
